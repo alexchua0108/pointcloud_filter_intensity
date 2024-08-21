@@ -1,0 +1,13 @@
+<launch>
+  <!-- Declare an argument with a default value -->
+  <arg name="min_intensity_threshold" default="30" />
+  <arg name="input_topic" default="/ouster/points" />
+  <arg name="output_topic" default="/ouster/filtered_points" />
+
+  <!-- Use the argument value as a parameter for the node -->
+  <node name="pointcloud_intensity_filter_node" pkg="pointcloud_intensity_filter" type="pointcloud_intensity_filter_node" output="screen">
+    <param name="intensity_threshold" value="$(arg min_intensity_threshold)" />
+    <param name="input_topic" value="$(arg input_topic)" />
+    <param name="output_topic" value="$(arg output_topic)" />
+  </node>
+</launch>
